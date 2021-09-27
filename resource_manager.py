@@ -1,14 +1,8 @@
 from collections import namedtuple
 import json
 
-def load_config():
-    with open(file="user_resources/config.json", mode="r") as file:
-        return json.load(file)
+RES_DIR = "user_resources"
 
-def load_langs():
-    with open(file="user_resources/langs.json", encoding="utf-8", mode="r") as file:
-        return json.load(file)
-
-def load_theme():
-    with open(file="user_resources/theme.json", mode="r") as file:
+def load_resource(fname: str) -> dict:
+    with open(file=RES_DIR + "/" + fname, encoding="utf-8", mode="r") as file:
         return json.load(file)

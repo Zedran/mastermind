@@ -1,4 +1,4 @@
-from resource_manager import load_config, load_langs, load_theme
+from resource_manager import load_resource
 from collections import namedtuple
 import pygame
 
@@ -8,7 +8,6 @@ pygame.font.init()
 Binds = namedtuple("Binds", 'lmb rmb')
 Geometry = namedtuple('Geometry', 'x y w h')
 Fonts = namedtuple('Fonts', 'code button line_num')
-Language = namedtuple('Language', 'title ng exit ok won lost')
 Range = namedtuple("Range", 'min max')
 Buttons = namedtuple("Buttons", "ok ng exit")
 Settings = namedtuple("Settings", "fps attempts_num code_length code_range repetitions")
@@ -26,9 +25,9 @@ fonts = Fonts(
     line_num=pygame.font.SysFont("comicsansms", 16)
 )
 
-config = load_config()
-lang   = load_langs()[config["lang"]]
-theme  = load_theme()
+config = load_resource("config.json")
+lang   = load_resource("langs.json")[config["lang"]]
+theme  = load_resource("theme.json")
 
 settings = Settings(
     fps=30,
