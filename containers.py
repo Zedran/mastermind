@@ -1,4 +1,4 @@
-from resource_manager import load_theme, load_variables
+from resource_manager import load_theme, load_config
 from collections import namedtuple
 import pygame
 
@@ -27,7 +27,7 @@ fonts = Fonts(
 )
 
 theme = load_theme()
-user_variables = load_variables()
+config = load_config()
 
 settings = Settings(
     fps=30,
@@ -38,7 +38,7 @@ settings = Settings(
 )
 
 
-res_x, res_y = user_variables["RES"]
+res_x, res_y = config["res"]
 
 border_size = 10
 line_h = round(res_y * 0.07083)
@@ -71,7 +71,7 @@ layout = Layout(
 del res_x, res_y, border_size, line_h, cd_f_size, okb_w, fb_f_end_x, tb_h, tb_h_spacing
 
 langs = {
-    "EN": Language(
+    "en": Language(
         title="Mastermind",
         ng="New Game",
         exit="Exit",
@@ -79,7 +79,7 @@ langs = {
         won="Code Correct",
         lost="Game Over"
     ),
-    "PL": Language(
+    "pl": Language(
         title="Mastermind",
         ng="Nowa Gra",
         exit="Wyjście",
@@ -90,8 +90,8 @@ langs = {
 }
 
 try:
-    lang = langs[user_variables["LANG"]]
+    lang = langs[config["lang"]]
 except KeyError:
-    lang = langs["EN"]
+    lang = langs["en"]
 finally:
-    del langs, user_variables
+    del langs, config

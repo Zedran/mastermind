@@ -1,5 +1,0 @@
-//available languages: EN or PL
-LANG:PL
-
-//default 450,720 || minimal 370,640
-RES:450,720
