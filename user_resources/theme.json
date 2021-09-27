@@ -1,0 +1,100 @@
+{
+    "window_bg": "#8B7659",
+    "toolbar":   "#F2DEC6",
+
+    "code": [
+        "#4484C4",
+        "#07EFCC",
+        "#249635",
+        "#FF8800",
+        "#C90E0E",
+        "#5F17D3",
+        "#000000",
+        "#FFEA0A"
+    ],
+
+    "feedback": {
+        "correct":      "#C90E0E",
+        "half_correct": "#FFFFFF",
+        "inactive":     "#F2DEC6"
+    },
+
+    "text": {
+        "norm":             "#000000",
+        "contrast_reversed": "#FFFFFF",
+        "reversed_for":      [0, 2, 4, 5, 6]
+    },
+
+    "line": {
+        "bg_active":     "#FFFFFF",
+        "bg_inactive":   "#FFF8F2",
+        "number_text":   "#36393E",
+        "cor_line_bg":   "#F2DEC6"
+    },
+
+    "field": {
+        "bg_empty":         "#FFFFFF",
+        "bg_inactive":      "#F2DEC6",
+        "border":           "#8B7659",
+        "cor_field_hidden": "#8B7659"
+    },
+
+    "end_message": {
+        "won": {
+            "text": "#FFFFFF",
+            "bg":   "#249635"
+        },
+
+        "lost": {
+            "text": "#000000",
+            "bg":   "#F2DEC6"
+        }
+    },
+
+    "buttons": {
+        "ok": {
+            "normal":       "#009B00",
+            "hover":        "#00B400",
+            "pressed":      "#00CE00",
+            "border":       "#8B7659",
+            "text_norm":    "#FFFFFF",
+            "text_pressed": "#000000"
+        },
+
+        "ng": {
+            "normal":       "#3774B0",
+            "hover":        "#4484C4",
+            "pressed":      "#6D9FD1",
+            "border":       "#8B7659",
+            "text_norm":    "#FFFFFF",
+            "text_pressed": "#000000"
+        },
+
+        "exit": {
+            "normal":       "#C80000",
+            "hover":        "#E80000",
+            "pressed":      "#FF4040",
+            "border":       "#8B7659",
+            "text_norm":    "#FFFFFF",
+            "text_pressed": "#000000"
+        },
+
+        "yes": {
+            "normal":       "#93C54B",
+            "hover":        "#A9D16F",
+            "pressed":      "#FFEA0A",
+            "border":       "#8B7659",
+            "text_norm":    "#FFFFFF",
+            "text_pressed": "#000000"
+        },
+
+        "no": {
+            "normal":       "#C90E0E",
+            "hover":        "#F24444",
+            "pressed":      "#FF8800",
+            "border":       "#8B7659",
+            "text_norm":    "#FFFFFF",
+            "text_pressed": "#000000"
+        }
+    }
+}

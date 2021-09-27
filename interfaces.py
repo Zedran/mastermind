@@ -3,7 +3,7 @@ from prc import generate_code, compare_codes, parse_output
 import pygame
 
 
-def text_objects(text: str, font, color: tuple = theme["TEXT"]):
+def text_objects(text: str, font, color: tuple):
     """
     Generates text object.
 
@@ -34,7 +34,7 @@ class Line:
         self.is_active = False
 
         self.code = [0 for i in range(settings.code_length)]
-        self.feedback = [theme["FEEDBACK"].empty for i in range(settings.code_length)]
+        self.feedback = [theme["feedback"]["inactive"] for i in range(settings.code_length)]
 
         self.bg_field = None
         self.cd_fields = []
@@ -46,7 +46,7 @@ class Line:
                                        w=None, h=None)
 
     def draw_fields(self):
-        bg_color = theme["LINE BG ACTIVE"] if self.is_active else theme["LINE BG INACTIVE"]
+        bg_color = theme["line"]["bg_active"] if self.is_active else theme["line"]["bg_inactive"]
         pygame.draw.rect(self.display, bg_color, self.bg_field)
 
         self._draw_cd()
@@ -58,26 +58,26 @@ class Line:
     def _draw_cd(self):
         for cd, code_el in zip(self.cd_fields, self.code):
             if not self.is_active and 0 in self.code:
-                cd_field_color = theme["FIELD INACTIVE"]
+                cd_field_color = theme["field"]["bg_inactive"]
             elif code_el == 0:
-                cd_field_color = theme["CD FIELD EMPTY"]
+                cd_field_color = theme["field"]["bg_empty"]
             else:
-                cd_field_color = theme["CODE ELEMENTS"][code_el - 1]
+                cd_field_color = theme["code"][code_el - 1]
 
             pygame.draw.rect(self.display, cd_field_color, cd)
 
             if self.is_active or 0 not in self.code:
                 self._add_text(cd_field=cd, code_element=code_el)
 
-            pygame.draw.rect(self.display, theme["FIELD BORDER"], cd, 1)
+            pygame.draw.rect(self.display, theme["field"]["border"], cd, 1)
 
     def _draw_fb(self):
         for fb, fb_color in zip(self.fb_fields, self.feedback):
             pygame.draw.rect(self.display, fb_color, fb)
-            pygame.draw.rect(self.display, theme["FIELD BORDER"], fb, 1)
+            pygame.draw.rect(self.display, theme["field"]["border"], fb, 1)
 
     def _add_text(self, cd_field, code_element):
-        color = theme["TEXT CONTRAST REVERSED"] if code_element - 1 in theme["CONTRAST REVERSED FOR"] else theme["TEXT"]
+        color = theme["text"]["contrast_reversed"] if code_element - 1 in theme["text"]["reversed_for"] else theme["text"]["norm"]
 
         text_surf, text_rect = text_objects(text=str(code_element), font=fonts.code, color=color)
         text_rect.center = (cd_field.x + cd_field.w * 0.5, cd_field.y + cd_field.h * 0.5)
@@ -86,7 +86,7 @@ class Line:
     def _add_line_number(self):
         text_surf, text_rect = text_objects(text=str(self.controller.lines.index(self) + 1),
                                             font=fonts.line_num,
-                                            color=theme["LINE NUM TEXT"])
+                                            color=theme["line"]["number_text"])
         text_rect.center = (self.line_num_field.x, self.line_num_field.y)
         self.display.blit(text_surf, text_rect)
 
@@ -135,7 +135,7 @@ class Line:
 
     def reset(self):
         self.code = [0 for i in range(settings.code_length)]
-        self.feedback = [theme["FEEDBACK"].empty for i in range(settings.code_length)]
+        self.feedback = [theme["feedback"]["inactive"] for i in range(settings.code_length)]
         self.is_active = False
 
     def _compute_fields(self):
@@ -185,23 +185,23 @@ class CorrectLine:
         self.hidden = True
 
     def draw(self):
-        pygame.draw.rect(self.display, theme["COR CD LINE BG"], self.bg_field)
-        pygame.draw.rect(self.display, theme["FIELD BORDER"], self.bg_field, 1)
+        pygame.draw.rect(self.display, theme["line"]["cor_line_bg"], self.bg_field)
+        pygame.draw.rect(self.display, theme["field"]["border"], self.bg_field, 1)
         self._draw_hidden() if self.hidden else self._draw_visible()
 
     def _draw_hidden(self):
         for field in self.cd_fields:
-            pygame.draw.rect(self.display, theme["COR CD FIELD HIDDEN"], field)
-            pygame.draw.rect(self.display, theme["FIELD BORDER"], field, 1)
+            pygame.draw.rect(self.display, theme["field"]["cor_field_hidden"], field)
+            pygame.draw.rect(self.display, theme["field"]["border"], field, 1)
 
     def _draw_visible(self):
         for char, field in zip(self.code, self.cd_fields):
-            pygame.draw.rect(self.display, theme["CODE ELEMENTS"][char - 1], field)
+            pygame.draw.rect(self.display, theme["code"][char - 1], field)
             self._add_text(cd_field=field, code_element=char)
-            pygame.draw.rect(self.display, theme["FIELD BORDER"], field, 1)
+            pygame.draw.rect(self.display, theme["field"]["border"], field, 1)
 
     def _add_text(self, cd_field, code_element):
-        color = theme["TEXT CONTRAST REVERSED"] if code_element - 1 in theme["CONTRAST REVERSED FOR"] else theme["TEXT"]
+        color = theme["text"]["contrast_reversed"] if code_element - 1 in theme["text"]["reversed_for"] else theme["text"]["norm"]
 
         text_surf, text_rect = text_objects(text=str(code_element), font=fonts.code, color=color)
         text_rect.center = (cd_field.x + cd_field.w * 0.5, cd_field.y + cd_field.h * 0.5)
@@ -311,22 +311,22 @@ class Toolbar:
 
         self.ng_button = Button(display, x=b_x, y=b_y,
                                 w=layout.toolbar_button_w, h=layout.toolbar_button_h,
-                                color_active=theme["NEW GAME"].mouse_over, color_inactive=theme["NEW GAME"].normal,
-                                border_w=1, border_color=theme["NEW GAME"].border,
-                                pressed_down_color=theme["NEW GAME"].mouse_down,
-                                text_color_norm=theme["NEW GAME"].text_norm,
-                                text_color_pressed=theme["NEW GAME"].text_pressed,
+                                color_active=theme["buttons"]["ng"]["hover"], color_inactive=theme["buttons"]["ng"]["normal"],
+                                border_w=1, border_color=theme["buttons"]["ng"]["border"],
+                                pressed_down_color=theme["buttons"]["ng"]["pressed"],
+                                text_color_norm=theme["buttons"]["ng"]["text_norm"],
+                                text_color_pressed=theme["buttons"]["ng"]["text_pressed"],
                                 text=lang.ng, action=self.pass_ng_signal)
         self.ex_button = Button(display, x=button_count * spacing + layout.toolbar_button_w, y=b_y,
                                 w=layout.toolbar_button_w, h=layout.toolbar_button_h,
-                                color_active=theme["EXIT"].mouse_over, color_inactive=theme["EXIT"].normal,
-                                border_w=1, border_color=theme["EXIT"].border,
-                                pressed_down_color=theme["EXIT"].mouse_down,
-                                text_color_norm=theme["EXIT"].text_norm, text_color_pressed=theme["EXIT"].text_pressed,
+                                color_active=theme["buttons"]["exit"]["hover"], color_inactive=theme["buttons"]["exit"]["normal"],
+                                border_w=1, border_color=theme["buttons"]["exit"]["border"],
+                                pressed_down_color=theme["buttons"]["exit"]["pressed"],
+                                text_color_norm=theme["buttons"]["exit"]["text_norm"], text_color_pressed=theme["buttons"]["exit"]["text_pressed"],
                                 text=lang.exit, action=self.pass_exit_signal)
 
     def full_draw(self):
-        pygame.draw.rect(self.display, theme["TOOLBAR"], self.bg)
+        pygame.draw.rect(self.display, theme["toolbar"], self.bg)
         self.light_weight_draw()
 
     def light_weight_draw(self):
@@ -362,9 +362,9 @@ class GameBoard:
             x=layout.okb.x,
             y=self.lines[0].bg_field.y + 0.5 * (layout.line_h - layout.okb.h),
             w=layout.okb.w, h=layout.okb.h,
-            color_active=theme["OK"].mouse_over, color_inactive=theme["OK"].normal,
-            border_w=1, border_color=theme["OK"].border, pressed_down_color=theme["OK"].mouse_down,
-            text_color_norm=theme["OK"].text_norm, text_color_pressed=theme["OK"].text_pressed,
+            color_active=theme["buttons"]["ok"]["hover"], color_inactive=theme["buttons"]["ok"]["normal"],
+            border_w=1, border_color=theme["buttons"]["ok"]["border"], pressed_down_color=theme["buttons"]["ok"]["pressed"],
+            text_color_norm=theme["buttons"]["ok"]["text_norm"], text_color_pressed=theme["buttons"]["ok"]["text_pressed"],
             text=lang.ok, action=self.submit_code, jump_inc=layout.line_h)
 
         self.buttons = Buttons(ok=self.ok_button, ng=self.toolbar.ng_button, exit=self.toolbar.ex_button)
@@ -379,7 +379,7 @@ class GameBoard:
         self.lines[self.cur_line].is_active = True
 
     def full_draw(self):
-        self.display.fill(theme["WINDOW BG"])
+        self.display.fill(theme["window_bg"])
 
         for line in self.lines:
             line.draw_fields()
@@ -406,16 +406,16 @@ class GameBoard:
 
     def display_message(self):
         if self.game_result:
-            text_color = theme["MSG WON TEXT"]
-            bg_color = theme["MSG WON BG"]
+            text_color = theme["end_message"]["won"]["text"]
+            bg_color = theme["end_message"]["won"]["bg"]
             text = lang.won
         else:
-            text_color = theme["MSG LOST TEXT"]
-            bg_color = theme["MSG LOST BG"]
+            text_color = theme["end_message"]["lost"]["text"]
+            bg_color = theme["end_message"]["lost"]["bg"]
             text = lang.lost
 
         pygame.draw.rect(self.display, bg_color, self.game_over_field)
-        pygame.draw.rect(self.display, theme["FIELD BORDER"], self.game_over_field, 1)
+        pygame.draw.rect(self.display, theme["field"]["border"], self.game_over_field, 1)
 
         # TODO do something with text displays, this is a mess
         text_surf, text_rect = text_objects(text=text, font=fonts.button, color=text_color)
@@ -456,8 +456,8 @@ class GameBoard:
         fb = compare_codes(user_code=self.lines[self.cur_line].code,
                            good_code=self.cor_cd_line.code)
         parsed = parse_output(output=fb,
-                              hit_objects=(theme["FEEDBACK"].red, theme["FEEDBACK"].white),
-                              empty_object=theme["FEEDBACK"].empty,
+                              hit_objects=(theme["feedback"]["correct"], theme["feedback"]["half_correct"]),
+                              empty_object=theme["feedback"]["inactive"],
                               code_length=settings.code_length)
 
         self.lines[self.cur_line].feedback = parsed
@@ -478,7 +478,7 @@ class GameBoard:
         self.lines[self.cur_line].is_active = False
 
     def _check_for_end_game(self, parsed_code):
-        if parsed_code.count(theme["FEEDBACK"].red) == settings.code_length:
+        if parsed_code.count(theme["feedback"]["correct"]) == settings.code_length:
             self._end_game(game_is_won=True)
         elif self.cur_line == settings.attempts_num - 1:
             self._end_game(game_is_won=False)
