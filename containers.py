@@ -5,19 +5,19 @@ import pygame
 
 pygame.font.init()
 
-Binds = namedtuple("Binds", 'lmb rmb')
+Binds    = namedtuple("Binds", 'lmb rmb')
 Geometry = namedtuple('Geometry', 'x y w h')
-Fonts = namedtuple('Fonts', 'code button line_num')
-Range = namedtuple("Range", 'min max')
-Buttons = namedtuple("Buttons", "ok ng exit")
+Fonts    = namedtuple('Fonts', 'code button line_num')
+Range    = namedtuple("Range", 'min max')
+Buttons  = namedtuple("Buttons", "ok ng exit")
 Settings = namedtuple("Settings", "fps attempts_num code_length code_range repetitions")
-Layout = namedtuple("Layout", "window border_size line_w line_h lines_spacing cd_field_size cd_field_spacing "
+Layout   = namedtuple("Layout", "window border_size line_w line_h lines_spacing cd_field_size cd_field_spacing "
                               "fb_field_size fb_field_spacing cd_to_fb_spacing okb "
                               "toolbar_h toolbar_h_spacing toolbar_button_w toolbar_button_h")
 
 
+binds   = Binds(lmb=1, rmb=3)
 signals = Buttons(ok=None, ng=1, exit=2)
-binds = Binds(lmb=1, rmb=3)
 
 fonts = Fonts(
     code=pygame.font.SysFont("comicsansms", 20),
@@ -30,11 +30,11 @@ lang   = load_resource("langs.json")[config["lang"]]
 theme  = load_resource("theme.json")
 
 settings = Settings(
-    fps=30,
+    fps=config["fps"],
     attempts_num=12,
     code_length=4,
     code_range=Range(min=1, max=8),
-    repetitions=False
+    repetitions=False  # the game does not handle repetitions for now
 )
 
 
@@ -67,5 +67,3 @@ layout = Layout(
     toolbar_button_h=tb_h - tb_h_spacing
 
 )
-
-del res_x, res_y, border_size, line_h, cd_f_size, okb_w, fb_f_end_x, tb_h, tb_h_spacing

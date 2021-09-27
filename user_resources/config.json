@@ -1,4 +1,7 @@
 {
     "lang": "en",
-    "res":  [450, 720]
+    "repetitions": false,
+
+    "res":  [450, 720],
+    "fps": 30
 }

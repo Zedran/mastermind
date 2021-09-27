@@ -1,4 +1,3 @@
-from collections import namedtuple
 import json
 
 RES_DIR = "user_resources"
