@@ -1,4 +1,4 @@
-from resource_manager import load_theme, load_config
+from resource_manager import load_config, load_langs, load_theme
 from collections import namedtuple
 import pygame
 
@@ -26,8 +26,9 @@ fonts = Fonts(
     line_num=pygame.font.SysFont("comicsansms", 16)
 )
 
-theme = load_theme()
 config = load_config()
+lang   = load_langs()[config["lang"]]
+theme  = load_theme()
 
 settings = Settings(
     fps=30,
@@ -69,29 +70,3 @@ layout = Layout(
 )
 
 del res_x, res_y, border_size, line_h, cd_f_size, okb_w, fb_f_end_x, tb_h, tb_h_spacing
-
-langs = {
-    "en": Language(
-        title="Mastermind",
-        ng="New Game",
-        exit="Exit",
-        ok="OK",
-        won="Code Correct",
-        lost="Game Over"
-    ),
-    "pl": Language(
-        title="Mastermind",
-        ng="Nowa Gra",
-        exit="Wyjście",
-        ok="OK",
-        won="Kod Prawidłowy",
-        lost="Koniec Gry"
-    )
-}
-
-try:
-    lang = langs[config["lang"]]
-except KeyError:
-    lang = langs["en"]
-finally:
-    del langs, config

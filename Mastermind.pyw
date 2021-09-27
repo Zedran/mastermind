@@ -9,7 +9,7 @@ pygame.init()
 os.environ["SDL_VIDEO_CENTERED"] = '1'
 
 game_display = pygame.display.set_mode((layout.window.w, layout.window.h))
-pygame.display.set_caption(lang.title)
+pygame.display.set_caption(lang["title"])
 
 try:
     pygame.display.set_icon(pygame.image.load("m.png"))

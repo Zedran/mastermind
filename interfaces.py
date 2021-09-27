@@ -316,14 +316,14 @@ class Toolbar:
                                 pressed_down_color=theme["buttons"]["ng"]["pressed"],
                                 text_color_norm=theme["buttons"]["ng"]["text_norm"],
                                 text_color_pressed=theme["buttons"]["ng"]["text_pressed"],
-                                text=lang.ng, action=self.pass_ng_signal)
+                                text=lang["ng"], action=self.pass_ng_signal)
         self.ex_button = Button(display, x=button_count * spacing + layout.toolbar_button_w, y=b_y,
                                 w=layout.toolbar_button_w, h=layout.toolbar_button_h,
                                 color_active=theme["buttons"]["exit"]["hover"], color_inactive=theme["buttons"]["exit"]["normal"],
                                 border_w=1, border_color=theme["buttons"]["exit"]["border"],
                                 pressed_down_color=theme["buttons"]["exit"]["pressed"],
                                 text_color_norm=theme["buttons"]["exit"]["text_norm"], text_color_pressed=theme["buttons"]["exit"]["text_pressed"],
-                                text=lang.exit, action=self.pass_exit_signal)
+                                text=lang["exit"], action=self.pass_exit_signal)
 
     def full_draw(self):
         pygame.draw.rect(self.display, theme["toolbar"], self.bg)
@@ -365,7 +365,7 @@ class GameBoard:
             color_active=theme["buttons"]["ok"]["hover"], color_inactive=theme["buttons"]["ok"]["normal"],
             border_w=1, border_color=theme["buttons"]["ok"]["border"], pressed_down_color=theme["buttons"]["ok"]["pressed"],
             text_color_norm=theme["buttons"]["ok"]["text_norm"], text_color_pressed=theme["buttons"]["ok"]["text_pressed"],
-            text=lang.ok, action=self.submit_code, jump_inc=layout.line_h)
+            text=lang["ok"], action=self.submit_code, jump_inc=layout.line_h)
 
         self.buttons = Buttons(ok=self.ok_button, ng=self.toolbar.ng_button, exit=self.toolbar.ex_button)
 
@@ -408,11 +408,11 @@ class GameBoard:
         if self.game_result:
             text_color = theme["end_message"]["won"]["text"]
             bg_color = theme["end_message"]["won"]["bg"]
-            text = lang.won
+            text = lang["won"]
         else:
             text_color = theme["end_message"]["lost"]["text"]
             bg_color = theme["end_message"]["lost"]["bg"]
-            text = lang.lost
+            text = lang["lost"]
 
         pygame.draw.rect(self.display, bg_color, self.game_over_field)
         pygame.draw.rect(self.display, theme["field"]["border"], self.game_over_field, 1)

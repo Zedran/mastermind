@@ -1,0 +1,19 @@
+{
+    "en": {
+        "title": "Mastermind",
+        "ng":    "New Game",
+        "exit":  "Exit",
+        "ok":    "OK",
+        "won":   "Code Correct",
+        "lost":  "Game Over"
+    },
+
+    "pl": {
+        "title": "Mastermind",
+        "ng":    "Nowa Gra",
+        "exit":  "Wyjście",
+        "ok":    "OK",
+        "won":   "Kod Prawidłowy",
+        "lost":  "Koniec Gry"
+    }
+}
