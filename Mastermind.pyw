@@ -1,8 +1,9 @@
 from containers import lang, layout, settings, signals
-from interfaces import GameBoard
-from sys import exit
-import pygame
+from game_board import GameBoard
 import os
+import pygame
+from sys import exit
+
 
 pygame.init()
 
@@ -16,10 +17,8 @@ try:
 except pygame.error:
     pass
 
-
 clock = pygame.time.Clock()
-fps = settings.fps
-
+fps   = settings.fps
 
 board = GameBoard(
     display=game_display,

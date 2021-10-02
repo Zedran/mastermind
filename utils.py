@@ -1,5 +1,19 @@
-from random import randint, choice
 from copy import copy
+from random import randint, choice
+
+
+def gen_text_object(text: str, font, color: tuple):
+    """
+    Generates text object.
+
+    :param text: string to display
+    :param font: pygame font object
+    :param color: text color in RGB
+
+    :returns: pygame text object
+    """
+    text_surface = font.render(text, True, color)
+    return text_surface, text_surface.get_rect()
 
 
 def generate_code(length=4, repetitions=False):
