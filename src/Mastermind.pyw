@@ -2,6 +2,7 @@ from containers import lang, layout, settings, signals
 from game_board import GameBoard
 import os
 import pygame
+from resource_manager import RES_DIR
 from sys import exit
 
 
@@ -13,7 +14,7 @@ game_display = pygame.display.set_mode((layout.window.w, layout.window.h))
 pygame.display.set_caption(lang["title"])
 
 try:
-    pygame.display.set_icon(pygame.image.load("m.png"))
+    pygame.display.set_icon(pygame.image.load(RES_DIR + "/" + "img/m.png"))
 except pygame.error:
     pass
 

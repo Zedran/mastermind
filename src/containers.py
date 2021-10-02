@@ -1,6 +1,6 @@
-from resource_manager import load_resource
 from collections import namedtuple
 import pygame
+from resource_manager import load_resource
 
 
 pygame.font.init()
@@ -25,9 +25,9 @@ fonts = Fonts(
     line_num=pygame.font.SysFont("comicsansms", 16)
 )
 
-config = load_resource("config.json")
-lang   = load_resource("langs.json")[config["lang"]]
-theme  = load_resource("theme.json")
+config = load_resource("settings/config.json")
+lang   = load_resource("settings/langs.json")[config["lang"]]
+theme  = load_resource("settings/theme.json")
 
 settings = Settings(
     fps=config["fps"],
@@ -65,5 +65,4 @@ layout = Layout(
     toolbar_h_spacing=tb_h_spacing,
     toolbar_button_w=cd_f_size * 4,
     toolbar_button_h=tb_h - tb_h_spacing
-
 )
