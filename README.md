@@ -27,3 +27,7 @@ In my version of the game, the AI sets the code randomly and the player attempts
 ## Resources
 
 * [Pygame](https://www.pygame.org/)
+
+## License
+
+This software is available under MIT license.
