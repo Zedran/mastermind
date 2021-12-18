@@ -19,12 +19,6 @@ Layout   = namedtuple("Layout", "window border_size line_w line_h lines_spacing 
 binds   = Binds(lmb=1, rmb=3)
 signals = Buttons(ok=None, ng=1, exit=2)
 
-fonts = Fonts(
-    code=pygame.font.SysFont("comicsansms", 20),
-    button=pygame.font.SysFont("comicsansms", 22),
-    line_num=pygame.font.SysFont("comicsansms", 16)
-)
-
 config = load_resource("settings/config.json")
 lang   = load_resource("settings/langs.json")[config["lang"]]
 theme  = load_resource("settings/theme.json")
@@ -65,4 +59,10 @@ layout = Layout(
     toolbar_h_spacing=tb_h_spacing,
     toolbar_button_w=cd_f_size * 4,
     toolbar_button_h=tb_h - tb_h_spacing
+)
+
+fonts = Fonts(
+    code=pygame.font.SysFont("comicsansms", round(0.60606 * layout.toolbar_button_h)),
+    button=pygame.font.SysFont("comicsansms", round(0.66667 * layout.toolbar_button_h)),
+    line_num=pygame.font.SysFont("comicsansms", round(0.48485 * layout.toolbar_button_h))
 )
