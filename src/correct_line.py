@@ -1,6 +1,6 @@
-from containers import settings, theme
 from layout import fonts, layout
 import pygame
+from resource_manager import settings, theme
 from utils import gen_text_object
 
 

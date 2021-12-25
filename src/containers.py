@@ -1,6 +1,5 @@
 from collections import namedtuple
 import pygame
-from resource_manager import load_resource
 
 
 pygame.font.init()
@@ -18,15 +17,3 @@ Layout   = namedtuple("Layout", "window border_size line_w line_h lines_spacing 
 
 binds   = Binds(lmb=1, rmb=3)
 signals = Buttons(ok=None, ng=1, exit=2)
-
-config = load_resource("settings/config.json")
-lang   = load_resource("settings/langs.json")[config["lang"]]
-theme  = load_resource("settings/theme.json")
-
-settings = Settings(
-    fps=config["fps"],
-    attempts_num=12,
-    code_length=4,
-    code_range=Range(min=1, max=8),
-    repetitions=False  # the game does not handle repetitions for now
-)

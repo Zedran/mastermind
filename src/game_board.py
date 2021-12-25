@@ -1,9 +1,10 @@
 from button import Button
-from containers import binds, Buttons, lang, settings, signals, theme
+from containers import binds, Buttons, signals
 from correct_line import CorrectLine
 from layout import fonts, layout
 from line import Line
 import pygame
+from resource_manager import lang, settings, theme
 from toolbar import Toolbar
 from utils import compare_codes, generate_code, gen_text_object, parse_output
 
