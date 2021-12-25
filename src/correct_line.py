@@ -1,6 +1,6 @@
 from layout import fonts, layout
 import pygame
-from resource_manager import settings, theme
+from resources import settings, theme
 from utils import gen_text_object
 
 

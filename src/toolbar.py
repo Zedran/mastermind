@@ -2,7 +2,7 @@ from button import Button
 from containers import signals
 from layout import layout
 import pygame
-from resource_manager import lang, theme
+from resources import lang, theme
 
 
 class Toolbar:

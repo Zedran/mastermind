@@ -3,7 +3,7 @@ from game_board import GameBoard
 from layout import layout
 import os
 import pygame
-from resource_manager import lang, RES_DIR, settings
+from resources import lang, RES_DIR, settings
 from sys import exit
 
 

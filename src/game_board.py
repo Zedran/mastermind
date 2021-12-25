@@ -4,7 +4,7 @@ from correct_line import CorrectLine
 from layout import fonts, layout
 from line import Line
 import pygame
-from resource_manager import lang, settings, theme
+from resources import lang, settings, theme
 from toolbar import Toolbar
 from utils import compare_codes, generate_code, gen_text_object, parse_output
 

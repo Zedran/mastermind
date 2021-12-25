@@ -1,6 +1,6 @@
 from containers import Fonts, Geometry, Layout
 import pygame
-from resource_manager import config, settings
+from resources import config, settings
 
 
 res_x, res_y = config["res"]
