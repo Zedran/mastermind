@@ -2,16 +2,39 @@
 
 ## Introduction
 
-This is the implementation of the Mastermind game written in Python.
-Mastermind is a two-player game in which one person sets the secret code and the other tries to figure it out. 
-In my version of the game, the AI sets the code randomly and the player attempts to break it.
+This is the implementation of the Mastermind game written in Python. It is one of my early programming projects. The code is not top quality (I work on it in my spare time), but it works decently and the game is fun to play, therefore I have decided to upload it to Github and make the repository public.
+
+Mastermind is a two-player game in which one person sets the secret code and the other tries to figure it out. In my version of the game, the AI sets the code randomly and the player attempts to break it.
 
 ## Features
 
 * Customizable theme
 * Languages:
-    * EN - English
-    * PL - Polish
+    * en - English
+    * pl - Polish
+    * ru - Russian
+
+## Running the game
+
+The game requires a non-ancient Python interpreter fitted with pygame library. You can use the `MM.bat` file in the main directory or run the `Mastermind.pyw` directly.
+
+## Modifying the game
+
+At present, there is no in-game way to change language, theme or resolution. You have to edit the proper variables in json files within `/res/settings` using your favorite text editor.
+
+### Config
+
+Two important options in `config.json` are `lang` and `res`. The first one determines the language of the game. Its value is a two-letter name of the dictionary contained in `langs.json`. The second one holds the window resolution in pixels - [width, height]. 
+
+You can also adjust `fps` (frames per second) value. Keep in mind that low fps will make the interface laggy. `repetitions` is a placeholder, changing its value will have no effect on the game.
+
+### Language
+
+You can add your own language to `langs.json`. Just copy one of the dictionaries, paste it anywhere within outer brackets and replace the values with your own. Make sure to name your language dictionary uniquely.
+
+### Theme
+
+Theme information is stored within `theme.json`. It holds a dictionary of HTML color codes. The proper description of this file will be created on a later date.
 
 ## Rules
 
