@@ -1,7 +1,10 @@
 from containers import Range, Settings
 import json
 import os
+import pygame
 
+
+pygame.font.init()
 
 # ensure the correct working directory for the relative paths to properly point to resources,
 # regardless of whether the game is launched through the batch script or directly from source directory

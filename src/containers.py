@@ -1,8 +1,5 @@
 from collections import namedtuple
-import pygame
 
-
-pygame.font.init()
 
 Binds    = namedtuple("Binds", 'lmb rmb')
 Geometry = namedtuple('Geometry', 'x y w h')
