@@ -1,5 +1,6 @@
-from containers import lang, layout, settings, signals
+from containers import lang, settings, signals
 from game_board import GameBoard
+from layout import layout
 import os
 import pygame
 from resource_manager import RES_DIR

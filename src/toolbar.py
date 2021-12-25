@@ -1,5 +1,6 @@
 from button import Button
-from containers import lang, layout, signals, theme
+from containers import lang, signals, theme
+from layout import layout
 import pygame
 
 

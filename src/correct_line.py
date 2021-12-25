@@ -1,4 +1,5 @@
-from containers import fonts, layout, settings, theme
+from containers import settings, theme
+from layout import fonts, layout
 import pygame
 from utils import gen_text_object
 

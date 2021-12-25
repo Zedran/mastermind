@@ -1,6 +1,7 @@
 from button import Button
-from containers import binds, Buttons, fonts, lang, layout, settings, signals, theme
+from containers import binds, Buttons, lang, settings, signals, theme
 from correct_line import CorrectLine
+from layout import fonts, layout
 from line import Line
 import pygame
 from toolbar import Toolbar

@@ -1,4 +1,5 @@
-from containers import binds, fonts, Geometry, layout, settings, theme
+from containers import binds, Geometry, settings, theme
+from layout import fonts, layout
 import pygame
 from utils import gen_text_object
 
